@@ -1,0 +1,48 @@
+@import "var.scss";
+
+.header {
+    background-color: #000;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 800px;
+    top: 0;
+    width: 100%;
+    height: 50px;
+
+    img {
+        width: 110px;
+        height: 35px;
+        margin-left: 15px;
+    }
+
+    ul {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        gap: 100px;
+
+        a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 0.8rem;
+        }
+
+        a:hover {
+            color: $cor-primaria;
+        }
+
+    }
+
+    .logo {
+        display: flex;
+        flex-direction: row;
+        color: #fff;
+        align-items: center;
+
+        p {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+    }
+}
