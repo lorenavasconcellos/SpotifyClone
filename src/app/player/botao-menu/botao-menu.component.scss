@@ -1,0 +1,28 @@
+:host {
+    display: block;
+    width: 100%;
+    button {
+        background-color: #000;
+        color: #fff;
+        border-radius: 200px;
+        padding: 10px 0px 10px 20px;
+        width: 100%;
+        text-align: left;
+
+        span {
+            display: inline-block;
+            vertical-align: middle;
+            width: 100px;
+            white-space: nowrap;
+            margin-left: 15px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+
+    button:hover {
+        border-color: #fff;
+        cursor: pointer;
+    }
+
+}

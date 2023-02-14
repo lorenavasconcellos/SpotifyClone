@@ -1,0 +1,45 @@
+@import 'var.scss';
+
+$height-spotify-logo: 120px;
+$height-menu-itens: 150px;
+$margin-itens-menu: 10px;
+
+:host {
+    max-width: 230px;
+    min-height: 100vh;
+    display: flex;
+    overflow-y: hidden; //esconde o que passar da width
+    flex-direction: column;
+
+    .menu {
+        background-color: #000;
+        flex-direction: column;
+        flex: 1;
+        height: 100%;
+        padding: 0px 25px;
+
+        .logo-img {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: $height-spotify-logo;
+            
+            img {
+                width: 70%;
+            }
+        }
+
+        .itens-menu {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            width: 100%;
+            min-height: $height-menu-itens;
+
+            * {
+                margin-bottom: $margin-itens-menu;
+            }
+        }
+    }
+}

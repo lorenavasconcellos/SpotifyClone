@@ -1,0 +1,31 @@
+<div class="menu">
+    <div class="logo-img">
+        <img src="assets/img/logo-extensa-branca.png" alt="">
+    </div>
+    <div class="itens-menu">
+        <app-botao-menu [descricao]="'Início'">
+            <fa-icon [icon]="homeIcon"></fa-icon>
+        </app-botao-menu>
+        <app-botao-menu [descricao]="'Pesquisar'">
+            <fa-icon [icon]="searchIcon"></fa-icon>
+        </app-botao-menu>
+        <app-botao-menu [descricao]="'Biblioteca'">
+            <fa-icon [icon]="booksIcon"></fa-icon>
+        </app-botao-menu><br><br>
+        <app-botao-menu [descricao]="'Criar playlist'">
+            <fa-icon [icon]="plusIcon"></fa-icon>
+        </app-botao-menu>
+        <app-botao-menu [descricao]="'Curtidas'">
+            <fa-icon [icon]="heartIcon"></fa-icon>
+        </app-botao-menu>
+    </div>
+    <hr size="1"><br>
+    <div class="itens-menu2">
+        <app-botao-menu *ngFor = "let playlist of playlists" [descricao]="playlist.nome">
+            <fa-icon [icon]="playlistIcon"></fa-icon>
+        </app-botao-menu><br><br>
+    </div>
+</div>
+<div class="usuario-info">
+    
+</div>
