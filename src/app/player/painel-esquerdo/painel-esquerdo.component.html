@@ -3,25 +3,38 @@
         <img src="assets/img/logo-extensa-branca.png" alt="">
     </div>
     <div class="itens-menu">
-        <app-botao-menu [descricao]="'Início'">
+        <app-botao-menu [descricao]="'Início'"
+        [selecionado]="menuSelecionado === 'Início'"
+        (click) = "botaoClick('Iníco')">
             <fa-icon [icon]="homeIcon"></fa-icon>
         </app-botao-menu>
-        <app-botao-menu [descricao]="'Pesquisar'">
+        <app-botao-menu [descricao]="'Pesquisar'"
+        [selecionado]="menuSelecionado === 'Pesquisar'"
+        (click) = "botaoClick('Pesquisar')">
             <fa-icon [icon]="searchIcon"></fa-icon>
         </app-botao-menu>
-        <app-botao-menu [descricao]="'Biblioteca'">
+        <app-botao-menu [descricao]="'Biblioteca'"
+        [selecionado]="menuSelecionado === 'Biblioteca'"
+        (click) = "botaoClick('Biblioteca')">
             <fa-icon [icon]="booksIcon"></fa-icon>
-        </app-botao-menu><br><br>
-        <app-botao-menu [descricao]="'Criar playlist'">
+        </app-botao-menu><br>
+        <app-botao-menu [descricao]="'Criar playlist'"
+        [selecionado]="menuSelecionado === 'Criar playlist'"
+        (click) = "botaoClick('Criar playlist')">
             <fa-icon [icon]="plusIcon"></fa-icon>
         </app-botao-menu>
-        <app-botao-menu [descricao]="'Curtidas'">
+        <app-botao-menu [descricao]="'Curtidas'"
+        [selecionado]="menuSelecionado === 'Curtidas'"
+        (click) = "botaoClick('Curtidas')">
             <fa-icon [icon]="heartIcon"></fa-icon>
         </app-botao-menu>
     </div>
     <hr size="1"><br>
     <div class="itens-menu2">
-        <app-botao-menu *ngFor = "let playlist of playlists" [descricao]="playlist.nome">
+        <app-botao-menu *ngFor = "let playlist of playlists" 
+        [descricao]="playlist.nome"
+        [selecionado]="menuSelecionado === playlist.id"
+        (click)="irParaPlaylist(playlist.id)">
             <fa-icon [icon]="playlistIcon"></fa-icon>
         </app-botao-menu><br><br>
     </div>

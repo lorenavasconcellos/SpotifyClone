@@ -1,0 +1,42 @@
+:host {
+    width: 100%;
+    display: flex;
+    
+    .barra {
+        display: flex;
+        flex-direction: row;
+        height: 7vh;
+        background-color: #000;
+        color: #fff;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+
+        h2 {
+            margin-left: 20px;
+        }
+
+        .usuarioInfo {
+            width: 200px;
+            background-color: #131111;
+            width: 220px;
+            height: 35px;
+            border-radius: 200px;
+            display: flex;
+            flex-direction: row;
+            gap: 8px;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+
+            img {
+                width: 10%;
+                border-radius: 200px;
+            }
+
+            fa-icon {
+                cursor: pointer;
+            }
+        }
+    }
+}

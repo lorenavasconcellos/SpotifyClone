@@ -1,0 +1,12 @@
+<div class="barra">
+    <h2>Bem Vindo(a), ao Spotify Clone!</h2>
+    <div class="usuarioInfo">
+        <img [src]="usuario.imagemUrl" alt="">
+        <span>
+            {{ usuario.nome }}
+        </span>
+        <fa-icon [icon]="sairIcon"
+        (click)="logout()">
+        </fa-icon>
+    </div>
+</div>

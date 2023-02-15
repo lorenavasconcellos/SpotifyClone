@@ -1,0 +1,55 @@
+@import 'var.scss';
+
+.card {
+  height: 250px;
+  width: 100wh;
+  background-color: #0e0d0d;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 20px 20px;
+  
+
+  .artista {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    
+    .titulo {
+        color: #fff;
+        font-size: 50px;
+        margin: 0;
+        padding: 0;
+    }
+
+    p {
+        color: #fff;
+        font-weight: 600;
+        margin: 0;
+        padding: 0;
+    }
+  }
+  
+  .image {
+    img {
+        width: 250px;
+        height: 250px;
+        padding: 30px 20px;
+    }
+  }
+
+  button {
+    border: none;
+    background-color: $cor-primaria;
+    padding: 10px;
+    border-radius: 200px;
+    width: 80px;
+    font-weight: 800;
+  }
+
+  button:hover {
+    cursor: pointer;
+  }
+  
+}

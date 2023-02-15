@@ -2,8 +2,11 @@ import { Injectable } from '@angular/core';
 import { SpotifyConfiguration } from 'src/environments/environment.prod';
 import Spotify from 'spotify-web-api-js';
 import { IUsuario } from '../Interfaces/IUsuario';
-import { SpotifyPlaylistParaPlaylist, SpotifyUserParaUsuario } from '../Common/spotifyHelper';
+import { SpotifyArtistaParaArtista, SpotifyPlaylistParaPlaylist, SpotifySinglePlaylistParaPlaylist, SpotifyTrackParaMusica, SpotifyUserParaUsuario } from '../Common/spotifyHelper';
 import { IPlaylist } from '../Interfaces/IPlaylist';
+import { ITrack } from '../Interfaces/ITrack';
+import { IArtista } from '../Interfaces/IArtista';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +16,7 @@ export class SpotifyServiceService {
   spotifyApi: Spotify.SpotifyWebApiJs = null;
   usuario: IUsuario;
 
-  constructor() { 
+  constructor(private router: Router) { 
     this.spotifyApi = new Spotify();
   }
 
@@ -67,6 +70,53 @@ export class SpotifyServiceService {
   async buscarPlaylistUsuario(offset = 0, limit = 50): Promise<IPlaylist[]>{
     const playlists = await this.spotifyApi.getUserPlaylists(this.usuario.id, { offset, limit });
     return playlists.items.map(SpotifyPlaylistParaPlaylist);
+  }
+
+  async buscarMusicasPlaylist(playlistId: string, offset = 0, limit = 50){
+    const playlistSpotify = await this.spotifyApi.getPlaylist(playlistId);
+
+    if (!playlistSpotify)
+      return null;
+    
+    const playlist = SpotifySinglePlaylistParaPlaylist(playlistSpotify);
+
+    const musicasSpotify = await this.spotifyApi.getPlaylistTracks(playlistId, { offset, limit });
+    playlist.musicas = musicasSpotify.items.map(musica => SpotifyTrackParaMusica(musica.track as SpotifyApi.TrackObjectFull))
+    
+    return playlist;
+  }
+
+  async buscarTopArtistas(limit = 10):Promise<IArtista[]> {
+    const artistas = await this.spotifyApi.getMyTopArtists({ limit });
+    return artistas.items.map(SpotifyArtistaParaArtista);
+  }
+
+  async buscarMusicas(limit=10): Promise<ITrack[]>{
+    const musicas = await this.spotifyApi.getMySavedTracks({ limit });
+    return musicas.items.map(x => SpotifyTrackParaMusica(x.track));
+  }
+
+  async executarMusica(musicaId: string){
+    await this.spotifyApi.queue(musicaId);
+    await this.spotifyApi.skipToNext();
+  }
+
+  async obterMusicaAtual(): Promise<ITrack>{
+    const musicaSpotify = await this.spotifyApi.getMyCurrentPlayingTrack();
+    return SpotifyTrackParaMusica(musicaSpotify.item);
+  }
+
+  async voltarMusica(){
+    await this.spotifyApi.skipToPrevious();
+  }
+
+  async proximaMusica() {
+    await this.spotifyApi.skipToNext();
+  }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/login']);
   }
 
 }

@@ -1,0 +1,35 @@
+@import 'var.scss';
+
+table {
+    background-color: #0e0d0d;
+    margin: 0 20px;
+    margin-bottom: 20px;
+
+    thead {
+        color: #fff;
+    }
+
+    tbody {
+        color: #fff;
+        
+        td, th {
+            padding: 10px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        td {
+            padding-left: 30px;
+            padding-top: 20px;
+        }
+    }
+
+    tr:hover {
+        color: $cor-primaria;
+    }
+
+    .play {
+        color: $cor-primaria;
+        cursor: pointer;
+    }
+}
